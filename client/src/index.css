@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+p {
+  font-family: 'Outfit', sans-serif;
+}
+
+a.active {
+  color: #994CF5;
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 520px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .orders {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .product_list {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .product_list .main_img {
+    width: 40%;
+    height: 40%;
+    margin: auto;
+  }
+
+  .product_list .category {
+    color: #994CF5;
+  }
+
+  .blog_list_title {
+    display: none;
+  }
+
+  .blog_list {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .blog_list .main_image {
+    width: 50%;
+    height: 50%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 430px) {
+  .prod {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .products {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart_items {
+    grid-template-columns: 2fr 4fr
+  }
+
+  .my_account_sidebar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .orders {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width:350px) {
+  .blog_list .main_image {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+  }
+
+  .product_list .main_img {
+    width: 50%;
+    height: 50%;
+    margin: auto;
+  }
+  .order_image_parent {
+    display: flex;
+    flex-direction: column;
+  }
+  .order_image_parent img {
+    width: 60%;
+    height: 60%;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .my_account_sidebar {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+  }
+}

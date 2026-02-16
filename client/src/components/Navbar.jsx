@@ -51,7 +51,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className={`bg-white border border-b ${sticky ? 'shadow-lg' : 'shadow-none'}`}>
+        <div className={`bg-white border-b ${sticky ? 'shadow-lg' : 'shadow-none'}`}>
           <div className='container mx-auto px-4 py-[2vh] flex items-center justify-between'>
             <figure className="logo">
               <Link to={'/'}>

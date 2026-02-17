@@ -96,3 +96,24 @@ export const deleteUserOrder = (req, res) => {
         }
     })
 }
+
+export const updateOrderStatus = (req, res) => {
+    const { order_id } = req.params;
+    const { order_status } = req.body;
+    if (!order_status) {
+        return res.status(400).json({ success: false, messege: "Status can,t be null" })
+    }
+    const sql = 'SELECT * FROM orders JOIN order_items ON orders._id = order_items.order_id';
+    db.query(sql, (err, result) => {
+        if (err) {
+            return res.status(500).json({ success: false, messege: err })
+        }
+        const values = [order_status]
+        db.query('UPDATE orders SET order_status = ? WHERE _id = ?', [...values, order_id], (err, result) => {
+            if (err) {
+                return res.status(500).json({ success: false, messege: err })
+            }
+            res.status(200).json({success: true,messege:"Order Status updated"})
+        })
+    })
+}

@@ -8,6 +8,7 @@ import { AppContext } from '../../context/AppContext'
 
 const Orders = () => {
     const [orders, setOrders] = useState([])
+    const [orderStatus,setOrderStatus] = useState('')
     const { currency, backendUrl, token } = useContext(AppContext);
     const fetchAllOrders = async () => {
         try {
@@ -34,15 +35,32 @@ const Orders = () => {
         }
     }
 
+    const updateOrderStatus=async(event,order_id)=>{
+        try {
+
+            let response =await axios.put(`${backendUrl}/api/order/update-order/${order_id}`,{order_status:event.target.value},{withCredentials: true});
+            if(response.data.success){
+                fetchAllOrders()
+                toast.success(response.data.messege);
+            } else{
+                toast.error(response.data.messege)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     useEffect(() => {
         fetchAllOrders()
     }, [])
+
+    console.log(orders)
 
     return (
         <div className="flex-1 px-4 py-8 lg:py-10 lg:px-14 bg-blue-50/50">
             <h2 className="text-gray-800 font-medium mb-4">Orders List</h2>
             <div className='max-h-[80vh] mt-4 overflow-auto max-w-7xl'>
-                {orders?.reverse().map((order, index) => (
+                {orders?.map((order, index) => (
                     <div key={index} className="bg-white grid xl:grid-cols-[2fr_2fr_1fr_2fr_1fr] md:grid-cols-[2fr_2fr_1fr] sm:grid-cols-2 items-center gap-4 py-4 px-3 rounded-md border border-gray-300 text-gray-800">
                         <div className="order_image_parent flex gap-2">
                             <img className="w-12 h-12 object-cover" src={order?.image ? JSON.parse(order?.image) : null} alt="product_image" />
@@ -65,7 +83,7 @@ const Orders = () => {
                             <p>Date: {new Date(order.created_at).toDateString()}</p>
                             <p>Payment: {order.isPaid ? "Paid" : "Pending"}</p>
                         </div>
-                        <select value={order?.order_status} onChange={(event) => statusHandler(event, order._id)} className='p-2 font-semibold text-xs outline-[#994CF5] w-fit'>
+                        <select value={order?.order_status} onChange={(event)=>updateOrderStatus(event,order.order_id)} className='p-2 font-semibold text-xs outline-[#994CF5] w-fit'>
                             <option value="Order Placed">Order Placed</option>
                             <option value="Packing">Packing</option>
                             <option value="Shipped">Shipped</option>

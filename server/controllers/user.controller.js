@@ -181,7 +181,7 @@ export const forgotPassword = (req, res) => {
         return res.status(400).json({ success: false, messege: "Email is required" })
     }
     const sql = 'SELECT * FROM users WHERE email = ?';
-    db.query(sql, [email],async (err, data) => {
+    db.query(sql, [email], async (err, data) => {
         if (err) {
             console.log({ success: false, messege: err })
             return res.status(500).json({ success: false, messege: "Error: " + err })
@@ -199,13 +199,13 @@ export const forgotPassword = (req, res) => {
                 from: process.env.ADMIN_EMAIL,
                 to: data[0]?.email,
                 subject: 'Reset Password',
-                text:`Click the link to reset your password ${resetLink}`
+                text: `Click the link to reset your password ${resetLink}`
             }
-            await transporter.sendMail(mailOptions,(error,info)=>{
-                if(error){
+            await transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
                     console.log(error)
-                    return res.status(500).json({success:false,messege:error.message})
-                } else{
+                    return res.status(500).json({ success: false, messege: error.message })
+                } else {
                     return res.status(200).json({ success: true, messege: "Reset Password link sent successfully", resetLink })
                 }
             });
@@ -231,4 +231,20 @@ export const resetPassword = async (req, res) => {
             return res.status(200).json({ success: true, messege: "Password Reset Successfully" })
         }
     })
+}
+
+export const adminLogin = (req, res) => {
+    try {
+        const { email, password } = req.body;
+        if (!email || !password) {
+            return res.status(401).json({ success: false, messege: "Can,t be empty" })
+        }
+        if(email !== process.env.ADMIN_EMAIL || password !== process.env.ADMIN_PASSWORD){
+            return res.status(401).json({success: false, messege: "Invalid Credientials"})
+        }
+        const token = jwt.sign(email + password, process.env.ADMIN_JWT_SECRET);
+        res.status(200).json({success: true, messege: "admin loggedin successfull", token})
+    } catch (error) {
+        return res.status(500).json({success: false, messege: "Error in Login: " + error})
+    }
 }

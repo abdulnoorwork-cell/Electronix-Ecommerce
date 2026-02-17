@@ -27,9 +27,10 @@ import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import Orders from './pages/admin/Orders';
 import { AppContext } from './context/AppContext';
+import AdminLogin from './pages/admin/Login'
 
 const App = () => {
-  const { token }= useContext(AppContext);
+  const { token,isAdmin }= useContext(AppContext);
   return (
     <div>
       <Routes>
@@ -54,7 +55,7 @@ const App = () => {
           <Route path='/shop/headphones' element={<CategoryProducts category='HeadPhones' />} />
           <Route path='/shop/product/:productId' element={<SingleProduct />} />
         </Route>
-        <Route path='/admin' element={<Layout />}>
+        {isAdmin ? <Route path='/admin' element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path='addblog' element={<AddBlog />} />
           <Route path='listblog' element={<ListBlog />} />
@@ -63,7 +64,7 @@ const App = () => {
           <Route path='updateblog/:blogId' element={<UpdateBlog />} />
           <Route path='updateproduct/:productId' element={<UpdateProduct />} />
           <Route path='listorders' element={<Orders />} />
-        </Route>
+        </Route> : <Route path='/admin' element={<AdminLogin />} />}
       </Routes>
       <Toaster />
     </div>

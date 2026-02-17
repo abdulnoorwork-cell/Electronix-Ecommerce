@@ -21,6 +21,8 @@ const AppContextProvider = ({ children }) => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const navigate = useNavigate();
     const shippingFee = 10;
+    const isAdmin = localStorage.getItem('token')
+
 
     const fetchBlogs = async () => {
         try {
@@ -172,7 +174,7 @@ const AppContextProvider = ({ children }) => {
     }, [])
 
     return (
-        <AppContext.Provider value={{ backendUrl, navigate, token, blogs, products, currency, addToCart, cartItems, totalPrice, shippingFee, totalCartItems, removeFomCart, updateQuantity, userData, userId, fetchUser, getCartItems, getTotalCartItems,userOrders,fetchUserOrders }}>
+        <AppContext.Provider value={{ backendUrl, navigate, token, blogs, products, currency, addToCart, cartItems, totalPrice, shippingFee, totalCartItems, removeFomCart, updateQuantity, userData, userId, fetchUser, getCartItems, getTotalCartItems,userOrders,fetchUserOrders,isAdmin }}>
             {children}
         </AppContext.Provider>
     )

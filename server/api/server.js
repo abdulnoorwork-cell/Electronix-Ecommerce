@@ -54,7 +54,7 @@ app.use('/api/product',productRoutes);
 app.use('/api/cart',cartRoutes);
 app.use('/api/order',orderRoutes);
 
-app.get('/',(req,res)=>{
+app.get('/',(_,res)=>{
     res.send('backend is running')
 })
 

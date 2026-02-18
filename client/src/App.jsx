@@ -30,7 +30,17 @@ import { AppContext } from './context/AppContext';
 import AdminLogin from './pages/admin/Login'
 
 const App = () => {
-  const { token,isAdmin }= useContext(AppContext);
+  const { token, isAdmin } = useContext(AppContext);
+  const now = new Date();
+  const item = {
+    value: token,
+    expiry: now.getTime() + 24 * 60 * 60 * 1000
+  }
+  // If expired
+  if (now.getTime() > item.expiry) {
+    localStorage.removeItem("User");
+    return null;
+  }
   return (
     <div>
       <Routes>

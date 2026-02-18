@@ -7,9 +7,9 @@ const ProductCard = ({ product }) => {
     const {addToCart} = useContext(AppContext);
     return (
         <div>
-            <div className="border border-gray-500/20 mx-auto relative rounded-md md:px-4 px-3 py-2 mb-3 bg-blue-50/40 max-w-[250px] w-full">
+            <div className="product_card border border-gray-500/20 mx-auto relative rounded-md md:px-4 px-3 py-2 mb-3 bg-blue-50/40 max-w-[250px] w-full">
                 <Link to={`/shop/product/${product?._id}`} className="group cursor-pointer flex items-center justify-center px-2">
-                    <img className="group-hover:scale-105 h-36 transition max-w-26 md:max-w-36" src={JSON.parse(product?.image)} alt={product.name} />
+                    <img className="group-hover:scale-105 sm:h-36 transition max-w-26 md:max-w-36" src={JSON.parse(product?.image)} alt={product.name} />
                 </Link>
                 <span className='absolute right-1 top-1 bg-[#FFD40C] text-gray-800 text-xs font-medium px-2 py-1 rounded-full'>-{Math.round(((product?.price - product?.offerPrice) / product?.price) * 100)}%</span>
                 <div className="text-gray-500/60 text-sm">

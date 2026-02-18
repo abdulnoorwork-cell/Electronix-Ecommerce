@@ -82,7 +82,7 @@ const Shop = () => {
         <>
             {/* Search */}
             <div className='border-t border-b bg-[rgba(235,235,235,1)] text-center'>
-                <div className="inline-flex items-center justify-center border bg-white px-5 py-2 my-5 mx-3 rounded-full w-3/4 sm:w-2/5">
+                <div className="inline-flex items-center justify-center border bg-white px-5 py-2 my-5 mx-3 rounded-full sm:w-2/5">
                     <input value={search} onChange={(e) => setSearch(e.target.value)} className='flex-1 outline-none bg-inherit text-sm' type="text" placeholder='Search here...' />
                     <img src={search_icon} className='w-4' alt="" />
                 </div>
@@ -145,7 +145,7 @@ const Shop = () => {
                         {/* <Title text1={'All'} text2={'Collections'} /> */}
 
                         {/* Product Sort */}
-                        <select onChange={(e) => setSortType(e.target.value)} className='w-fit border border-gray-300 text-sm py-[10px] text-gray-800 px-3 outline-none'>
+                        <select onChange={(e) => setSortType(e.target.value)} className='w-fit border border-gray-300 text-xs sm:text-[13px] font-medium py-[10px] text-gray-800 px-3 outline-none'>
                             <option hidden>Sort by Price</option>
                             <option value={"low-high"}>Sort by: Low to High</option>
                             <option value={"high-low"}>Sort by: High to Low</option>

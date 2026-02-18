@@ -22,7 +22,7 @@ const CategoryProducts = () => {
           <label onClick={() => setLabel('Video & Audios')} className={`px-6 py-[7px] rounded-full cursor-pointer text-sm text-center ${label === 'Video & Audios' ? 'text-white bg-[#994CF5]' : ''}`}>Videos & Audios</label>
         </div>
       </div>
-      <div className='prod grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5'>
+      <div className='prod grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4 sm:gap-5'>
         {label === 'All' ? products.slice(0,10).map((product, index) => (
           <ProductCard key={index} product={product} />
         )) : products.filter(prod => prod.category === label).slice(0, 10).map((product, index) => (

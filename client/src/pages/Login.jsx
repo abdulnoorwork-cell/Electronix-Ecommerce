@@ -22,6 +22,7 @@ const Login = () => {
     const [previewImage, setPreviewImage] = useState(profile_image);
 
     const { backendUrl, navigate, token } = useContext(AppContext)
+
     const file = useRef();
     const imageHandler = (e) => {
         let file = e.target.files[0];
@@ -82,17 +83,6 @@ const Login = () => {
                     navigate('/')
                     window.location.reload();
                 }, 1000)
-                // Decode token
-                const decoded = jwtDecode(token);
-
-                // Calculate remaining time
-                const expirationTime = decoded.exp * 1000 - Date.now();
-                // Auto logout when expired
-                setTimeout(() => {
-                    localStorage.removeItem("User");
-                    toast.error("Session expired. Please login again.");
-                 navigate('/login')   
-                }, expirationTime);
             }
         } catch (error) {
             console.log(error.response.data)

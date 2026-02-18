@@ -10,7 +10,7 @@ const Hero = () => {
       <div className='container mx-auto px-4 flex md:flex-row flex-col-reverse items-center gap-5 py-14 md:py-0 h-full md:h-[86vh]'>
         <div className='w-full flex flex-col md:items-start md:text-start items-center text-center gap-6'>
           <h1 className='text-white 2xl:text-[53px] xl:text-[50px] md:text-[45px] sm:text-[40px] text-[32px] font-bold' style={{lineHeight: '1em'}}>Flat 25% Off <br /> Electronic Order</h1>
-          <div className='flex items-center justify-between gap-5 border-t border-b border-[#ECF2F71A] py-3 w-full max-w-[400px]'>
+          <div className='flex items-center sm:justify-between justify-center gap-5 border-t border-b border-[#ECF2F71A] py-3 w-full max-w-[400px]'>
             <div className='flex flex-col sm:flex-row items-center gap-2'>
               <span className='bg-white text-[#994cf5] p-3 text-2xl rounded-full'>
                 <LiaAwardSolid />

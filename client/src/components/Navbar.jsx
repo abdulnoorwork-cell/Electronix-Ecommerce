@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className='sticky top-0 left-0 z-30'>
+      <div className='sticky top-0 left-0 z-30 w-full'>
         <div className={`bg-[#994CF5] md:block hidden text-white text-xs ${sticky ? 'fixed -top-[100%]' : 'block'}`}>
           <div className="container mx-auto px-4 py-[1vh] flex justify-between items-center">
             <div className='flex items-center gap-3'>
@@ -79,8 +79,8 @@ const Navbar = () => {
               </div>
               {token ? <span onClick={() => navigate('/my-account')} className='text-[22px] cursor-pointer'><LuUserRound /></span> : <span onClick={() => navigate('/login')} className='text-[22px] cursor-pointer'><LuUserRound /></span>}
               <span onClick={()=>setMobileMenu(true)} className='text-xl lg:hidden block cursor-pointer'><RiMenu3Line /></span>
-              <nav className={`fixed z-50 lg:hidden h-screen ${mobileMenu ? 'top-0 right-0' : '-top-full -right-full'} flex flex-col w-full max-w-[400px] text-[15px] font-medium bg-white justify-center items-center gap-5 text-gray-800`}>
-                <span onClick={()=>setMobileMenu(false)} className='text-xl absolute top-1 left-1 cursor-pointer'><MdClose /></span>
+              <nav className={`centered-container z-50 lg:hidden flex flex-col mx-auto w-[92%] sm:w-[400px] text-center text-[14px] font-medium bg-white justify-center items-center gap-5 text-gray-800 py-20 rounded-md ${mobileMenu ? 'block' : 'hidden'}`}>
+                <span onClick={()=>setMobileMenu(false)} className='text-lg p-1 rounded absolute top-1 right-1 bg-red-500 text-white cursor-pointer'><MdClose /></span>
                 <NavLink onClick={()=>setMobileMenu(false)} to={'/'} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>Home</p></NavLink>
                 <NavLink onClick={()=>setMobileMenu(false)} to={'/about'} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>About Us</p></NavLink>
                 <NavLink onClick={()=>setMobileMenu(false)} to={'/shop'} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>Shop</p></NavLink>
@@ -88,7 +88,7 @@ const Navbar = () => {
                 <NavLink onClick={()=>setMobileMenu(false)} to={'/contact'} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>Contact Us</p></NavLink>
               </nav>
             </div>
-            <div className={`w-full h-screen fixed top-0 left-0 bg-black/50 z-30 ${mobileMenu ? 'block' : 'hidden'}`}></div>
+            <div onClick={()=>setMobileMenu(false)} className={`w-full h-screen fixed top-0 left-0 bg-black/50 z-30 ${mobileMenu ? 'block' : 'hidden'}`}></div>
           </div>
         </div>
       </div>

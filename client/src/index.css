@@ -24,6 +24,13 @@ a.active {
   color: #994CF5;
 }
 
+.centered-container {
+    position: fixed; /* Fixes the element relative to the browser window */
+    top: 50%;          /* Moves the top edge to the vertical midpoint of the window */
+    left: 50%;         /* Moves the left edge to the horizontal midpoint of the window */
+    transform: translate(-50%, -50%); /* Shifts the container back up and left by half of its own width and height */
+}
+
 @media (min-width: 1536px) {
   .container {
     max-width: 1400px;

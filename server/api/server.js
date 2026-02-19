@@ -11,6 +11,7 @@ import blogRoutes from '../routes/blog.routes.js'
 import productRoutes from '../routes/product.routes.js';
 import cartRoutes from '../routes/cart.routes.js'
 import orderRoutes from '../routes/order.routes.js'
+import stripe from 'stripe'
 
 const app = express();
 const Port = process.env.PORT || 7000;

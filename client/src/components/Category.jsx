@@ -21,37 +21,37 @@ const Category = () => {
             </div>
             
             <div className='grid lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-6 text-sm'>
-                <div onClick={()=>{navigate('/shop/video-games');scrollTo(0,0)}} className='bg-transparent cursor-pointer'>
+                <div data-aos="fade-right" onClick={()=>{navigate('/shop/video-games');scrollTo(0,0)}} className='bg-transparent cursor-pointer'>
                     <figure>
                         <img src={video_game} className='border border-[#ECF2F7] rounded-[10px] max-w-[180px] w-full' alt="" />
                     </figure>
                     <h5 className='text-gray-800 font-medium text-center'>Video Games</h5>
                 </div>
-                <div onClick={()=>{navigate('/shop/video-&-audios');scrollTo(0,0)}} className='bg-transparent cursor-pointer'>
+                <div data-aos="fade-right" onClick={()=>{navigate('/shop/video-&-audios');scrollTo(0,0)}} className='bg-transparent cursor-pointer'>
                     <figure>
                         <img src={video_audio} className='border border-[#ECF2F7] rounded-[10px] max-w-[180px] w-full' alt="" />
                     </figure>
                     <h5 className='text-gray-800 font-medium text-center'>Video & Audios</h5>
                 </div>
-                <div onClick={()=>{navigate('/shop/smart-watch');scrollTo(0,0)}} className='bg-transparent cursor-pointer'>
+                <div data-aos="fade-up" onClick={()=>{navigate('/shop/smart-watch');scrollTo(0,0)}} className='bg-transparent cursor-pointer'>
                     <figure>
                         <img src={smart_watch} className='border border-[#ECF2F7] rounded-[10px] max-w-[180px] w-full' alt="" />
                     </figure>
                     <h5 className='text-gray-800 font-medium text-center'>Smart Watch</h5>
                 </div>
-                <div onClick={()=>{navigate('/shop/phones-&-tablets');scrollTo(0,0)}} className='bg-transparent cursor-pointer'>
+                <div data-aos="fade-up" onClick={()=>{navigate('/shop/phones-&-tablets');scrollTo(0,0)}} className='bg-transparent cursor-pointer'>
                     <figure>
                         <img src={phone_tablet} className='border border-[#ECF2F7] rounded-[10px] max-w-[180px] w-full' alt="" />
                     </figure>
                     <h5 className='text-gray-800 font-medium text-center'>Phones & Tablets</h5>
                 </div>
-                <div onClick={()=>{navigate('/shop/home-appliances');scrollTo(0,0)}} className='bg-transparent cursor-pointer'>
+                <div data-aos="fade-left" onClick={()=>{navigate('/shop/home-appliances');scrollTo(0,0)}} className='bg-transparent cursor-pointer'>
                     <figure>
                         <img src={home_appliance} className='border border-[#ECF2F7] rounded-[10px] max-w-[180px] w-full' alt="" />
                     </figure>
                     <h5 className='text-gray-800 font-medium text-center leading-[1.3em]'>Home Appliances</h5>
                 </div>
-                <div onClick={()=>{navigate('/shop/headphones');scrollTo(0,0)}} className='bg-transparent cursor-pointer'>
+                <div data-aos="fade-left" onClick={()=>{navigate('/shop/headphones');scrollTo(0,0)}} className='bg-transparent cursor-pointer'>
                     <figure>
                         <img src={headphone} className='border border-[#ECF2F7] rounded-[10px] max-w-[180px] w-full' alt="" />
                     </figure>

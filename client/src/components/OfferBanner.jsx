@@ -5,7 +5,7 @@ import mobile_image from '../assets/mobile_image.png'
 const OfferBanner = () => {
     return (
         <div className='container mx-auto px-4 mt-10'>
-            <div className='bg-[#944CF5] bg-no-repeat bg-cover pt-10 p-8 sm:p-10 rounded-[10px] relative overflow-hidden 2xl:h-[330px] gap-5 xl:h-[300px] sm:h-[260px] flex flex-col justify-center' style={{ backgroundImage: `url(${background_image})` }}>
+            <div data-aos="fade-up" className='bg-[#944CF5] bg-no-repeat bg-cover pt-10 p-8 sm:p-10 rounded-[10px] relative overflow-hidden 2xl:h-[330px] gap-5 xl:h-[300px] sm:h-[260px] flex flex-col justify-center' style={{ backgroundImage: `url(${background_image})` }}>
                 <div className='max-w-[350px]'>
                     <p className='sm:text-3xl xl:text-[40px] text-[28px] font-semibold text-[#FFD40C]' style={{lineHeight: '1em'}}>30% Off For New Customers</p>
                     <h6 className='text-white text-sm mt-4'>Free Shipping & Free Return at no order min. <br /> Restriction apply.</h6>

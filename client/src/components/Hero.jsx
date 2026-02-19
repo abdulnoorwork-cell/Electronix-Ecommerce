@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <div className='bg-[#994CF5] text-white'>
       <div className='container mx-auto px-4 flex md:flex-row flex-col-reverse items-center gap-5 py-14 md:py-0 h-full md:h-[86vh]'>
-        <div className='w-full flex flex-col md:items-start md:text-start items-center text-center gap-6'>
+        <div data-aos="fade-right" className='w-full flex flex-col md:items-start md:text-start items-center text-center gap-6'>
           <h1 className='text-white 2xl:text-[53px] xl:text-[50px] md:text-[45px] sm:text-[40px] text-[32px] font-bold' style={{lineHeight: '1em'}}>Flat 25% Off <br /> Electronic Order</h1>
           <div className='flex items-center justify-between gap-5 border-t border-b border-[#ECF2F71A] py-3 w-full max-w-[400px]'>
             <div className='flex items-center gap-2'>
@@ -29,7 +29,7 @@ const Hero = () => {
             <button className='border border-white hover:border-gray-800 py-[10px] px-[30px] sm:text-sm text-xs font-medium rounded-full hover:bg-gray-800 transition-all duration-200'>Explore Products</button>
           </Link>
         </div>
-        <figure className='w-full'>
+        <figure data-aos="fade-left" className='w-full'>
           <img src={hero_image} alt="" />
         </figure>
       </div>

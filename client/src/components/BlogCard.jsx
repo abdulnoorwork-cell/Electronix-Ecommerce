@@ -6,7 +6,7 @@ import { LiaAngleRightSolid } from "react-icons/lia";
 const BlogCard = ({ blog }) => {
     const { navigate } = useNavigate(AppContext);
     return (
-        <div className="bg-white hover:-translate-y-1 transition duration-300 mx-auto">
+        <div data-aos="zoom-in" className="bg-white hover:-translate-y-1 transition duration-300 mx-auto">
             <Link to={`/blog/${blog?._id}`} onClick={() => scrollTo(0, 0)}>
                 <img className="rounded-mdz w-full object-cover max-h-[260px] rounded-[10px]" src={blog?.image} alt="officeImage" />
             </Link>

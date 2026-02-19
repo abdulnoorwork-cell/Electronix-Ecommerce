@@ -28,6 +28,8 @@ import ResetPassword from './pages/ResetPassword';
 import Orders from './pages/admin/Orders';
 import { AppContext } from './context/AppContext';
 import AdminLogin from './pages/admin/Login'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const App = () => {
   const { token, isAdmin } = useContext(AppContext);
@@ -41,6 +43,12 @@ const App = () => {
     localStorage.removeItem("User");
     return null;
   }
+
+  useEffect(() => {
+    // Scroll Animation Reveal
+    AOS.init({ duration: 1000 })
+  }, [])
+
   return (
     <div>
       <Routes>

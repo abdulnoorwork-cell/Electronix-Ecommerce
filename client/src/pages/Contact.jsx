@@ -11,21 +11,21 @@ const Contact = () => {
       <PageBanner text={'Contact Us'} />
       <div className="container mx-auto px-4 mt-10">
         <div className='grid lg:grid-cols-3 sm:grid-cols-2 gap-5'>
-          <div className='flex items-center sm:gap-4 gap-3 sm:justify-center'>
+          <div data-aos="fade-right" className='flex items-center sm:gap-4 gap-3 sm:justify-center'>
             <span className='bg-white text-[#994CF5] sm:py-[20px] py-[18px] px-[18px] sm:px-[23px] shadow-[0px_4px_40px_0px_rgba(0,0,0,0.06)] border-[5px] border-gray-100 rounded-full h-full text-2xl sm:text-[30px]'><TfiMapAlt /></span>
             <div>
               <p className='text-gray-800 sm:text-xl text-lg font-medium'>Location Address</p>
               <h6 className='text-gray-600 text-sm sm:mt-1'>9066 Green Lake Driven</h6>
             </div>
           </div>
-          <div className='flex items-center sm:gap-4 gap-3 sm:justify-center'>
+          <div data-aos="fade-up" className='flex items-center sm:gap-4 gap-3 sm:justify-center'>
             <span className='bg-white text-[#994CF5] sm:py-[20px] py-[18px] px-[18px] sm:px-[23px] shadow-[0px_4px_40px_0px_rgba(0,0,0,0.06)] border-[5px] border-gray-100 rounded-full h-full text-2xl sm:text-[30px]'><FiPhoneCall /></span>
             <div>
               <p className='text-gray-800 sm:text-xl text-lg font-medium'>WhatsApp Us</p>
               <h6 className='text-gray-600 text-sm sm:mt-1'>(1800)-88-66-990-990</h6>
             </div>
           </div>
-          <div className='flex items-center sm:gap-4 gap-3 sm:justify-center'>
+          <div data-aos="fade-left" className='flex items-center sm:gap-4 gap-3 sm:justify-center'>
             <span className='bg-white text-[#994CF5] sm:py-[20px] py-[18px] px-[18px] sm:px-[23px] shadow-[0px_4px_40px_0px_rgba(0,0,0,0.06)] border-[5px] border-gray-100 rounded-full h-full text-2xl sm:text-[30px]'><TbMailForward /></span>
             <div>
               <p className='text-gray-800 sm:text-xl text-lg font-medium'>Email Address</p>
@@ -34,7 +34,7 @@ const Contact = () => {
           </div>
         </div>
         <div className='flex lg:flex-row flex-col items-center gap-8 mt-10 border-t pt-10 border-gray-100'>
-          <div className='w-full max-w-xl'>
+          <div data-aos="fade-right" className='w-full max-w-xl'>
             <h2 className='text-gray-800 2xl:text-5xl xl:text-4xl text-3xl font-bold'>Get In Touch And Feel Free To Contact Us!</h2>
             <h6 className='text-gray-600/90 mt-6 text-sm mb-6'>Torquent ut iusto odio ut sunt quae, sagittis massa dicta euismod, architecto, animi architecto magnam alias porttitor mollis facilis corporis duis pharetra? Atque posuere, lacus tristique labore pulvinar? Molestias sint perspiciatis.</h6>
             <div className='flex sm:flex-row flex-col items-center'>
@@ -64,7 +64,7 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          <div className='w-full'>
+          <div data-aos="fade-left" className='w-full'>
             <form action="https://api.web3forms.com/submit" method="POST" className='bg-white flex flex-col gap-4 py-10 mx-auto px-[30px] max-w-xl rounded-[10px] shadow-[0px_4px_40px_0px_rgba(0,0,0,0.06)]'>
               <input type="hidden" name="access_key" value="44a0df73-c478-46b6-af8f-27518e08c08e" />
               <input type="text" name="name" className='text-sm bg-blue-50 rounded-[10px] w-full border border-[#FFFFFF21] py-[13px] px-[18px] outline-[#994CF5]' placeholder='Your Name' />

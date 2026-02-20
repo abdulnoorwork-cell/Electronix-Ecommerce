@@ -58,17 +58,18 @@ const Navbar = () => {
                 <img src={logo} alt="" />
               </Link>
             </figure>
-            <nav className='text-[15px] lg:flex font-medium hidden items-center gap-5 text-gray-800'>
+            <nav className='text-sm lg:flex font-medium hidden items-center gap-5 text-gray-700'>
               <NavLink to={'/'} onClick={()=>scrollTo(0,0)} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>Home</p></NavLink>
               <NavLink to={'/about'} onClick={()=>scrollTo(0,0)} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>About Us</p></NavLink>
               <NavLink to={'/shop'} onClick={()=>scrollTo(0,0)} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>Shop</p></NavLink>
               <NavLink to={'/blogs'} onClick={()=>scrollTo(0,0)} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>Blog</p></NavLink>
               <NavLink to={'/contact'} onClick={()=>scrollTo(0,0)} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>Contact Us</p></NavLink>
+              <Link to={'/admin'} className='text-xs border px-5 p-1 border-gray-800 text-gray-800 rounded-full font-normal' style={{fontFamily:'Outfit'}}>Admin Panel</Link>
             </nav>
-            <div className='flex items-center justify-between text-gray-800 gap-5'>
+            <div className='flex items-center justify-between text-gray-700 gap-5'>
               <div className='items-center gap-3 sm:flex hidden'>
                 <span className='text-2xl'><FiPhoneCall /></span>
-                <div className='text-gray-800'>
+                <div className='text-gray-700'>
                   <h6 className='leading-[1.2em] text-xs'>Call Us Now</h6>
                   <h5>+92-3197-45367</h5>
                 </div>
@@ -79,13 +80,14 @@ const Navbar = () => {
               </div>
               {token ? <span onClick={() => navigate('/my-account')} className='text-[22px] cursor-pointer'><LuUserRound /></span> : <span onClick={() => navigate('/login')} className='text-[22px] cursor-pointer'><LuUserRound /></span>}
               <span onClick={()=>setMobileMenu(true)} className='text-xl lg:hidden block cursor-pointer'><RiMenu3Line /></span>
-              <nav className={`centered-container z-50 lg:hidden flex flex-col mx-auto w-[92%] sm:w-[400px] text-center text-[14px] font-medium bg-white justify-center items-center gap-5 text-gray-800 py-20 rounded-md ${mobileMenu ? 'block' : 'hidden'}`}>
+              <nav className={`centered-container z-50 lg:hidden flex flex-col mx-auto w-[92%] sm:w-[400px] text-center text-sm font-medium bg-white justify-center items-center gap-5 text-gray-700 py-20 rounded-md ${mobileMenu ? 'block' : 'hidden'}`}>
                 <span onClick={()=>setMobileMenu(false)} className='text-lg p-1 rounded absolute top-1 right-1 bg-red-500 text-white cursor-pointer'><MdClose /></span>
                 <NavLink onClick={()=>setMobileMenu(false)} to={'/'} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>Home</p></NavLink>
                 <NavLink onClick={()=>setMobileMenu(false)} to={'/about'} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>About Us</p></NavLink>
                 <NavLink onClick={()=>setMobileMenu(false)} to={'/shop'} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>Shop</p></NavLink>
                 <NavLink onClick={()=>setMobileMenu(false)} to={'/blogs'} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>Blog</p></NavLink>
                 <NavLink onClick={()=>setMobileMenu(false)} to={'/contact'} className={`px-2 hover:text-[#994CF5] transition-all duration-200`}><p>Contact Us</p></NavLink>
+                <Link to={'/admin'} className='text-xs border px-5 p-1 border-gray-800 text-gray-800 rounded-full font-normal' style={{fontFamily:'Outfit'}}>Admin Panel</Link>
               </nav>
             </div>
             <div onClick={()=>setMobileMenu(false)} className={`w-full h-screen fixed top-0 left-0 bg-black/50 z-30 ${mobileMenu ? 'block' : 'hidden'}`}></div>

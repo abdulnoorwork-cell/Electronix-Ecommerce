@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className='sticky top-0 left-0 z-30 w-full'>
+      <div className='z-30 w-full sticky top-0'>
         <div className={`bg-[#994CF5] md:block hidden text-white text-xs ${sticky ? 'fixed -top-[100%]' : 'block'}`}>
           <div className="container mx-auto px-4 py-[1vh] flex justify-between items-center">
             <div className='flex items-center gap-3'>
@@ -51,7 +51,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className={`bg-white border-b ${sticky ? 'shadow-lg' : 'shadow-none'}`}>
+        <div className={`w-full sticky top-0 bg-white border-b`}>
           <div className='container mx-auto px-4 py-[2vh] flex items-center justify-between'>
             <figure className="logo">
               <Link to={'/'}>

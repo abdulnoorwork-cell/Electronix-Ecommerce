@@ -5,9 +5,10 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const Checkout = () => {
-    const [cart] = useState([
-        { product_id: 1, name: "Product 1", price: 500, quantity: 2 }
-    ]);
+    // const [cart] = useState([
+    //     { product_id: 1, name: "Product 1", price: 500, quantity: 2 }
+    // ]);
+    const [payment_method,setPaymentMethod] = useState('COD') 
     const [deliveryInfo, setDeliveryInfo] = useState({
         full_name: "",
         phone: "",
@@ -30,7 +31,8 @@ const Checkout = () => {
             let response = await axios.post(`${backendUrl}/api/order/place-order/${userId}`, {
                 items: cartItems,
                 deliveryInfo,
-                shipping_fee: shippingFee
+                shipping_fee: shippingFee,
+                payment_method
             })
             if (response.data) {
                 console.log(response.data)
@@ -106,6 +108,13 @@ const Checkout = () => {
                             <div className='flex items-center mt-2 justify-between gap-3 text-[15px]'>
                                 <p>Total</p>
                                 <p>{currency}{totalPrice === 0 ? 0 : totalPrice + shippingFee}</p>
+                            </div>
+                            <div>
+                                <h3>Payment Method</h3>
+                                <select onChange={(e)=>setPaymentMethod(e.target.value)}>
+                                    <option value="COD">Cash on delivery</option>
+                                    <option value="ONLINE">Online Payment</option>
+                                </select>
                             </div>
                             <button className='mt-7 text-sm hover:bg-gray-800 transition duration-150 bg-[#994CF5] text-white rounded-full px-8 py-3'>Place Order</button>
                         </div>

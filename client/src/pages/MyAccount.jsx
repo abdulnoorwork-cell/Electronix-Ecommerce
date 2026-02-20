@@ -175,7 +175,7 @@ const MyAccount = () => {
                             <p className='text-2xl font-semibold text-gray-800 mb-4'>My details</p>
                             <div className='flex items-center gap-3'>
                                 <figure>
-                                    <img src={userData?.image ? JSON.parse(userData?.image) : null} className='w-[85px] h-[85px] rounded-full' alt="" />
+                                    <img src={userData?.image ? JSON.parse(userData?.image) : previewImage} className='w-[85px] h-[85px] rounded-full' alt="" />
                                 </figure>
                                 <p className='text-gray-800 font-semibold text-2xl'>{userData?.name}</p>
                             </div>
@@ -208,7 +208,7 @@ const MyAccount = () => {
                             <label className='ml-1'>Phone</label>
                             <input required onChange={(e) => setPhone(e.target.value)} name='phone' value={phone} className='border bg-[#f4f7fa] border-gray-300 py-[10px] rounded-[10px] px-3.5 w-full outline-none' type="number" placeholder='Phone' />
                         </div>
-                        <img src={previewImage} onClick={() => file.current.click()} className='w-[75px] h-[75px] rounded-full cursor-pointer mt-1' alt="" />
+                        <img src={previewImage} onClick={() => file.current.click()} className='w-[75px] h-[75px] rounded-full cursor-pointer mt-1' alt="profile image" />
                         <input type="file" ref={file} onChange={imageHandler} hidden />
                         <button type='submit' className='bg-[#994CF5] mt-4 text-white px-8 py-3 rounded-full' style={{ fontFamily: 'Outfit' }}>{loading ? 'saving...' : 'Save Changes'}</button>
                     </div>

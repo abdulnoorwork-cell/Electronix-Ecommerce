@@ -1,13 +1,13 @@
 import db from '../config/db.js'
-import Stripe from 'stripe';
 import 'dotenv/config'
+import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // placing order using COD method
-export const placeOrder = (req, res) => {
+export const placeOrder = async (req, res) => {
     const { user_id } = req.params;
-    const { payment_method, items, deliveryInfo, shipping_fee } = req.body;
+    const { items, deliveryInfo, shipping_fee } = req.body;
     let totalAmount = shipping_fee;
     items.forEach(item => {
         totalAmount += item.offerPrice * item.quantity;
@@ -16,51 +16,49 @@ export const placeOrder = (req, res) => {
     if (!items || items.length === 0) {
         return res.status(400).json({ messege: "Cart is empty" });
     }
-
-    if (payment_method === 'COD') {
-        const orderQuery = `
+    const orderQuery = `
     INSERT INTO orders 
     (user_id, total_amount, full_name, phone, address, city, state, postal_code, country)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
-        const values = [
-            user_id,
-            totalAmount,
-            deliveryInfo.full_name,
-            deliveryInfo.phone,
-            deliveryInfo.address,
-            deliveryInfo.city,
-            deliveryInfo.state,
-            deliveryInfo.postal_code,
-            deliveryInfo.country
-        ];
-        db.query(orderQuery, values, (err, result) => {
-            if (err) return res.status(500).json(err);
-            const orderId = result.insertId
-            const orderItemsQuery = `
+    const values = [
+        user_id,
+        totalAmount,
+        deliveryInfo.full_name,
+        deliveryInfo.email,
+        deliveryInfo.phone,
+        deliveryInfo.address,
+        deliveryInfo.city,
+        deliveryInfo.state,
+        deliveryInfo.postal_code,
+        deliveryInfo.country
+    ];
+    db.query(orderQuery, values, (err, result) => {
+        if (err) return res.status(500).json(err);
+        const orderId = result.insertId
+        const orderItemsQuery = `
       INSERT INTO order_items (order_id, product_id, quantity, price)
       VALUES ?
     `;
 
-            const itemValues = items.map(item => [
-                orderId,
-                item._id,
-                item.quantity,
-                item.offerPrice
-            ]);
-            db.query(orderItemsQuery, [itemValues], (err) => {
-                if (err) return res.status(500).json(err);
-                const deleteQuery = 'DELETE FROM cart_items WHERE user_id = ?';
-                db.query(deleteQuery, [user_id], (err3) => {
-                    if (err3) return res.status(500).json(err3);
-                    res.json({
-                        messege: "Order placed successfully",
-                        order_id: orderId
-                    });
-                })
+        const itemValues = items.map(item => [
+            orderId,
+            item._id,
+            item.quantity,
+            item.offerPrice
+        ]);
+        db.query(orderItemsQuery, [itemValues], (err) => {
+            if (err) return res.status(500).json(err);
+            const deleteQuery = 'DELETE FROM cart_items WHERE user_id = ?';
+            db.query(deleteQuery, [user_id], (err3) => {
+                if (err3) return res.status(500).json(err3);
+                res.json({
+                    messege: "Order placed successfully",
+                    order_id: orderId
+                });
             })
         })
-    }
+    })
     // if (payment_method === 'ONLINE') {
     //     const orderQuery = `INSERT INTO orders (user_id,total_amount,full_name, phone, address, city, state, postal_code, country) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)`
     //     const values = [
@@ -84,37 +82,61 @@ export const placeOrder = (req, res) => {
     //             item.quantity,
     //             item.offerPrice
     //         ]);
-    //         db.query(orderItemsQuery, [itemValues], (err, result) => {
+    //         db.query(orderItemsQuery, [itemValues],async (err, result) => {
     //             if (err) return res.status(500).json(err);
-    //             const session = stripe.checkout.sessions.create({
+    //             const lineItems = items.map((product) => ({
+    //                 price_data: {
+    //                     currency: "usd",
+    //                     product_data: {
+    //                         name: product.name,
+    //                         image: [product.image]
+    //                     },
+    //                     unit_amount: totalAmount
+    //                 },
+    //                 quantity: product.quantity
+    //             }))
+    //             const session = await stripe.checkout.sessions.create({
     //                 payment_method_types: ["card"],
+    //                 line_items: lineItems,
     //                 mode: "payment",
-    //                 line_items: [
-    //                     {
-    //                         price_data: {
-    //                             currency: "usd",
-    //                             product_data: { name: "Order Payment" },
-    //                             unit_amount: totalAmount
-    //                         },
-    //                         quantity: 1
-    //                     }
-    //                 ],
-    //                 success_url: `http://localhost:3000/success`,
-    //                 cancel_url: `http://localhost:3000/cancel`,
-    //                 metadata: {orderId}
+    //                 success_url: "http://localhost:5173/success",
+    //                 cancel_url: "http://localhost:5173/cancel"
     //             })
+    //             res.json({ id: session.id })
     //             const deleteQuery = 'DELETE FROM cart_items WHERE user_id = ?';
     //             db.query(deleteQuery, [user_id], (err3) => {
     //                 if (err3) return res.status(500).json(err3);
-    //                 return res.json({url:session.url})
-    //                 // res.json({
-    //                 //     messege: "Order placed successfully",
-    //                 //     order_id: orderId
-    //                 // });
+    //                 res.json({
+    //                     messege: "Order placed successfully",
+    //                     order_id: orderId
+    //                 });
     //             })
     //         })
     //     })
     // }
+}
+
+export const onlinePayment = async (req, res) => {
+    const { products } = req.body;
+    const lineItems = products.map((product) => ({
+        price_data: {
+            currency: "usd",
+            product_data: {
+                name: product.name,
+                image: [product.image]
+            },
+            unit_amount: Math.round(product.offerPrice * 100)
+        },
+        quantity: product.quantity
+    }))
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items: lineItems,
+        mode: "payment",
+        success_url: "http://localhost:5173/success",
+        cancel_url: "http://localhost:5173/cancel"
+    })
+    res.json({ id: session.id })
 }
 
 export const getUserOrders = (req, res) => {

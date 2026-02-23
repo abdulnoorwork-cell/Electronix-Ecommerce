@@ -3,12 +3,9 @@ import PageBanner from '../components/PageBanner'
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { loadStripe } from '@stripe/stripe-js';
 
 const Checkout = () => {
-    // const [cart] = useState([
-    //     { product_id: 1, name: "Product 1", price: 500, quantity: 2 }
-    // ]);
-    const [payment_method,setPaymentMethod] = useState('COD') 
     const [deliveryInfo, setDeliveryInfo] = useState({
         full_name: "",
         phone: "",
@@ -18,21 +15,21 @@ const Checkout = () => {
         postal_code: "",
         country: ""
     });
-    const { currency, totalPrice, shippingFee, userId, backendUrl, cartItems, navigate,getCartItems,getTotalCartItems,fetchUserOrders } = useContext(AppContext);
+    const { currency, totalPrice, shippingFee, userId, backendUrl, cartItems, navigate, getCartItems, getTotalCartItems, fetchUserOrders } = useContext(AppContext);
     const onchangeHandler = (e) => {
         setDeliveryInfo({
             ...deliveryInfo,
             [e.target.name]: e.target.value
         });
     }
+
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         try {
             let response = await axios.post(`${backendUrl}/api/order/place-order/${userId}`, {
                 items: cartItems,
                 deliveryInfo,
-                shipping_fee: shippingFee,
-                payment_method
+                shipping_fee: shippingFee
             })
             if (response.data) {
                 console.log(response.data)
@@ -61,10 +58,10 @@ const Checkout = () => {
                                 <label className='ml-1'>Full Name</label>
                                 <input required onChange={onchangeHandler} name='full_name' value={deliveryInfo.full_name} className='border border-gray-300 bg-[#f4f7fa] py-3 rounded-[10px] px-3.5 w-full outline-none' type="text" placeholder='First Name' />
                             </div>
-                            {/* <div className='flex flex-col gap-1 text-gray-800 w-full'>
+                            <div className='flex flex-col gap-1 text-gray-800 w-full'>
                                 <label className='ml-1'>Email Address</label>
                                 <input required onChange={onchangeHandler} name='email' value={deliveryInfo.email} className='border bg-[#f4f7fa] border-gray-300 py-3 rounded-[10px] px-3.5 w-full outline-none' type="email" placeholder='Email Address' />
-                            </div> */}
+                            </div>
                             <div className='flex flex-col gap-1 text-gray-800 w-full'>
                                 <label className='ml-1'>Address</label>
                                 <input required onChange={onchangeHandler} name='address' value={deliveryInfo.address} className='border bg-[#f4f7fa] border-gray-300 py-3 rounded-[10px] px-3.5 w-full outline-none' type="text" placeholder='Address' />
@@ -108,13 +105,6 @@ const Checkout = () => {
                             <div className='flex items-center mt-2 justify-between gap-3 text-[15px]'>
                                 <p>Total</p>
                                 <p>{currency}{totalPrice === 0 ? 0 : totalPrice + shippingFee}</p>
-                            </div>
-                            <div>
-                                <h3>Payment Method</h3>
-                                <select onChange={(e)=>setPaymentMethod(e.target.value)}>
-                                    <option value="COD">Cash on delivery</option>
-                                    <option value="ONLINE">Online Payment</option>
-                                </select>
                             </div>
                             <button className='mt-7 text-sm hover:bg-gray-800 transition duration-150 bg-[#994CF5] text-white rounded-full px-8 py-3'>Place Order</button>
                         </div>

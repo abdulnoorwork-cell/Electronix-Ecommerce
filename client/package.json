@@ -12,6 +12,7 @@
   "dependencies": {
     "@lexical/react": "^0.40.0",
     "@lexical/rich-text": "^0.40.0",
+    "@stripe/stripe-js": "^8.8.0",
     "@tinymce/tinymce-react": "^6.3.0",
     "@tiptap/core": "^3.19.0",
     "@tiptap/pm": "^3.19.0",

@@ -116,29 +116,6 @@ export const placeOrder = async (req, res) => {
     // }
 }
 
-export const onlinePayment = async (req, res) => {
-    const { products } = req.body;
-    const lineItems = products.map((product) => ({
-        price_data: {
-            currency: "usd",
-            product_data: {
-                name: product.name,
-                image: [product.image]
-            },
-            unit_amount: Math.round(product.offerPrice * 100)
-        },
-        quantity: product.quantity
-    }))
-    const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
-        line_items: lineItems,
-        mode: "payment",
-        success_url: "http://localhost:5173/success",
-        cancel_url: "http://localhost:5173/cancel"
-    })
-    res.json({ id: session.id })
-}
-
 export const getUserOrders = (req, res) => {
     const { user_id } = req.params;
     const sql = 'SELECT * FROM orders JOIN order_items ON orders._id = order_items.order_id JOIN products ON products._id = order_items.product_id WHERE user_id =?';

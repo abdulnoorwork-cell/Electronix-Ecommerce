@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 
 const ForgotPassword = () => {
     const [email,setEmail] = useState('');
+    const [loading, setLoading]=useState(false)
     const {backendUrl} = useContext(AppContext);
     const handleSubmit =async (e) => {
         e.preventDefault();
@@ -15,11 +16,15 @@ const ForgotPassword = () => {
                 withCredentials: true
             })
             if(response.data.success){
+                setLoading(false)
                 toast.success(response.data.messege)
                 setEmail('');
+                setLoading(false)
             }
+            setLoading(false)
             console.log(response.data)
         } catch (error) {
+            setLoading(false)
             console.log(error)
             toast.error(error.response.data.messege)
         }
@@ -32,7 +37,7 @@ const ForgotPassword = () => {
                 <label className='text-[15px]'>Email</label>
                 <input type="email" placeholder='Enter your email' value={email} onChange={(e)=>setEmail(e.target.value)} className='bg-[#ECF2F7] rounded-[5px] text-[#3D3D3D] placeholder:text-gray-400 py-3 px-[16px] text-sm w-full outline-[#994CF5]' />
             </div>
-            <button type="submit" className='text-white bg-[#994CF5] px-10 py-2.5 mt-5 rounded-full'>Send Link</button>
+            <button type="submit" className='text-white bg-[#994CF5] px-10 py-2.5 mt-5 rounded-full'>{loading ? "Sending Link..." : "Send Link"}</button>
         </form>
     </div>
   )

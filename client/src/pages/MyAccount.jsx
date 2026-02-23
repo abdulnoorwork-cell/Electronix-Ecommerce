@@ -89,7 +89,10 @@ const MyAccount = () => {
     const logout = () => {
         localStorage.removeItem('User')
         toast.success('Logout Successfully')
-        navigate('/login')
+        setTimeout(() => {
+            window.location.reload()
+            navigate('/login')
+        }, 1000)
     }
 
     const deleteOrder = async (order_id) => {

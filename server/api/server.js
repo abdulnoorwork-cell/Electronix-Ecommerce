@@ -58,8 +58,4 @@ app.get('/',(_,res)=>{
     res.send('backend is running')
 })
 
-// app.listen(Port, () => {
-//     console.log(`Server is running Port ${Port}`);
-// })
-
 export default app;

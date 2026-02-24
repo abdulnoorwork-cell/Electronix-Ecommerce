@@ -1,5 +1,5 @@
 import express from 'express'
-import { deleteUserOrder, fetchAllOrders, getUserOrders, onlinePayment, placeOrder, updateOrderStatus } from '../controllers/order.controller.js';
+import { deleteUserOrder, fetchAllOrders, getUserOrders, placeOrder, updateOrderStatus } from '../controllers/order.controller.js';
 import isAdmin from '../middleware/isAdmin.js';
 const router = express.Router();
 
@@ -8,6 +8,5 @@ router.get('/user-orders/:user_id',getUserOrders);
 router.get('/get-orders',fetchAllOrders);
 router.delete('/delete-order/:order_id',deleteUserOrder);
 router.put('/update-order/:order_id', isAdmin, updateOrderStatus);
-router.post('/create-checkout-session',onlinePayment)
 
 export default router;

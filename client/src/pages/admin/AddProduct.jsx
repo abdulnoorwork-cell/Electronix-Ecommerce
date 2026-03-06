@@ -84,10 +84,10 @@ const AddProduct = () => {
         <p className='mt-4'>Product Name</p>
         <input type="text" placeholder='Type...' id='name' name='name' value={name} onChange={(e) => setName(e.target.value)} className='w-full mt-2 p-2 min-h-10 text-gray-600 placeholder:font-light bg-[#f6fafd] border border-gray-300 outline-none rounded text-sm' required />
         <p className='mt-4 mb-2'>About</p>
-        <div ref={editorRef} className='w-full relative bg-[#f6fafd] border border-gray-300 min-h-[80px]'>
+        <div ref={editorRef} className='w-full relative bg-[#f6fafd] border border-gray-300 min-h-[80px] max-h-[180px] overflow-y-auto'>
         </div>
         <p className='mt-4 mb-2'>Description</p>
-        <div ref={editorRef2} className='w-full relative bg-[#f6fafd] border border-gray-300 min-h-[130px]'>
+        <div ref={editorRef2} className='w-full relative bg-[#f6fafd] border border-gray-300 min-h-[130px] max-h-[250px] overflow-y-auto'>
         </div>
         <div className='flex items-center w-full gap-4'>
           <div className='w-full relative'>

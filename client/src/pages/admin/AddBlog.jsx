@@ -64,7 +64,7 @@ const AddBlog = () => {
         <p className='mt-4'>Blog title</p>
         <input type="text" placeholder='Type...' value={title} onChange={(e)=>setTitle(e.target.value)} className='w-full mt-2 p-2 min-h-10 text-gray-600 placeholder:font-light bg-[#f6fafd] border border-gray-300 outline-none rounded text-sm' required />
         <p className='mt-4 mb-2'>Blog Description</p>
-        <div ref={editorRef} className='w-full relative bg-[#f6fafd] border border-gray-300 min-h-[160px]'></div>
+        <div ref={editorRef} className='w-full relative bg-[#f6fafd] border border-gray-300 min-h-[160px] max-h-[360px] overflow-y-auto'></div>
         <button type='submit' className='mt-7 text-sm px-8 w-fit py-[10px] bg-[#994CF5] text-white rounded cursor-pointer'>{loading ? 'Ading...' : 'Add Blog'}</button>
       </div>
     </form>

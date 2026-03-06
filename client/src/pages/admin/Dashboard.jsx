@@ -132,7 +132,7 @@ const Dashboard = () => {
         </div>
       </div>
       {/* blogs */}
-      <div className='max-w-4xl'>
+      <div className='max-w-3xl'>
         <div className='flex items-center gap-3 m-4 mt-6 text-gray-600'>
           <img src={dashboard_icon_4} alt="" />
           <p>Latest Blogs</p>

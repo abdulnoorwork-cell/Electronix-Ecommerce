@@ -8,7 +8,7 @@ const BlogCard = ({ blog }) => {
     return (
         <div data-aos="zoom-in" className="bg-white hover:-translate-y-1 transition duration-300 mx-auto">
             <Link to={`/blog/${blog?._id}`} onClick={() => scrollTo(0, 0)}>
-                <img className="rounded-mdz w-full object-cover max-h-[260px] rounded-[10px]" src={blog?.image} alt="officeImage" />
+                <img className="w-full object-cover max-h-[260px] rounded-[10px]" src={blog?.image} alt="officeImage" />
             </Link>
             <h6 className='text-sm text-gray-500 mt-3 mb-1 font-medium'>{new Date(blog?.createdAt).toDateString()}</h6>
             <p className="text-gray-800 text-[22px] font-semibold">

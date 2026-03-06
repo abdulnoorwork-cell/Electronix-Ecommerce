@@ -74,21 +74,21 @@ const Dashboard = () => {
   return (
     <div className='flex-1 px-4 py-8 lg:px-10 bg-blue-50/50'>
       <div className='flex flex-wrap gap-4'>
-        <div className='flex items-center gap-3 bg-white p-4 min-w-58 rounded shadow cursor-pointer hover:scale-105 transition-all'>
+        <div className='flex items-center gap-3 bg-white p-4 min-w-54 rounded shadow cursor-pointer hover:scale-105 transition-all'>
           <img src={dashboard_icon_1} className='w-14' alt="" />
           <div>
             <p className='text-xl font-semibold text-gray-600'>{products.length}</p>
             <p className='text-gray-500 font-light text-sm'>Products</p>
           </div>
         </div>
-        <div className='flex items-center gap-3 bg-white p-4 min-w-58 rounded shadow cursor-pointer hover:scale-105 transition-all'>
+        <div className='flex items-center gap-3 bg-white p-4 min-w-54 rounded shadow cursor-pointer hover:scale-105 transition-all'>
           <img src={dashboard_icon_1} className='w-14' alt="" />
           <div>
             <p className='text-xl font-semibold text-gray-600'>{blogs.length}</p>
             <p className='text-gray-500 font-light text-sm'>Blogs</p>
           </div>
         </div>
-        <div className='flex items-center gap-3 bg-white p-4 min-w-58 rounded shadow cursor-pointer hover:scale-105 transition-all'>
+        <div className='flex items-center gap-3 bg-white p-4 min-w-54 rounded shadow cursor-pointer hover:scale-105 transition-all'>
           <img src={dashboard_icon_1} className='w-14' alt="" />
           <div>
             <p className='text-xl font-semibold text-gray-600'>{orders?.length}</p>

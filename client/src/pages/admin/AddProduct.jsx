@@ -74,7 +74,7 @@ const AddProduct = () => {
 
   return (
     <form onSubmit={onSubmitHandler} className='flex-1 px-4 py-8 lg:py-10 lg:px-14 bg-blue-50/50 text-gray-600 h-full min-h-[95vh]'>
-      <div className='bg-white flex flex-col w-full max-w-3xl p-6 md:p-10 shadow rounded'>
+      <div className='bg-white flex flex-col w-full max-w-2xl p-6 md:p-10 shadow rounded'>
         <div className='flex items-center'>
           <label htmlFor="image">
             <img src={!image ? upload_area : URL.createObjectURL(image)} className='rounded cursor-pointer max-h-24 max-w-24' alt="" />

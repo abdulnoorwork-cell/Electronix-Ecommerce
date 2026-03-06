@@ -46,6 +46,7 @@ const ProductList = () => {
             <label className='mx-auto max-md:hidden'>Date</label>
             <label className='mx-auto'>Action</label>
           </div>
+          {products.length>0 ? 
           <div className='overflow-auto h-[75vh] scrollbar-hide relative'>
             {products?.reverse().map((product, index) => (
               <div key={index} className='product_list border-b border-gray-300 p-2 text-[13px] grid md:grid-cols-[1fr_2fr_1fr_1fr_1fr] sm:grid-cols-[1fr_2fr_1fr_1fr] grid-cols-[1fr_3fr_2fr] gap-2 items-center'>
@@ -61,7 +62,7 @@ const ProductList = () => {
                 </figure>
               </div>
             ))}
-          </div>
+          </div> : <div className='font-medium min-h-[100px] text-sm flex items-center justify-center text-center bg-white rounded-md'>You don,t have any products</div>}
         </div>
       </div>
     </div>

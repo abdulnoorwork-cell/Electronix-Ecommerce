@@ -59,6 +59,7 @@ const Orders = () => {
     return (
         <div className="flex-1 px-4 py-8 lg:py-10 lg:px-14 bg-blue-50/50">
             <h2 className="text-gray-800 font-medium mb-4">Orders List</h2>
+            {orders.length>0 ? 
             <div className='max-h-[80vh] mt-4 overflow-auto max-w-7xl'>
                 {orders?.map((order, index) => (
                     <div key={index} className="bg-white grid xl:grid-cols-[2fr_2fr_1fr_2fr_1fr] md:grid-cols-[2fr_2fr_1fr] sm:grid-cols-2 items-center gap-4 py-4 px-3 rounded-md border border-gray-300 text-gray-800">
@@ -92,7 +93,7 @@ const Orders = () => {
                         </select>
                     </div>
                 ))}
-            </div>
+            </div> : <div className='font-medium min-h-[100px] text-sm flex items-center max-w-3xl justify-center text-center bg-white rounded-md'>You don,t have any customer orders</div>}
         </div>
     )
 }

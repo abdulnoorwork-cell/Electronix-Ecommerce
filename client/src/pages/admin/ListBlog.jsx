@@ -45,6 +45,7 @@ const ListBlog = () => {
             <label className=' max-sm:hidden'>Date</label>
             <label className='mx-auto'>Action</label>
           </div>
+          {blogs.length>0 ? 
           <div>
             {blogs?.reverse().map((blog, index) => (
               <div key={index} className='blog_list border-b border-gray-300 text-sm p-3 grid sm:grid-cols-[1fr_2fr_1fr_1fr] grid-cols-[1fr_2fr_1fr] gap-2 items-center'>
@@ -59,7 +60,7 @@ const ListBlog = () => {
                 </figure>
               </div>
             ))}
-          </div>
+          </div> : <div className='font-medium min-h-[100px] text-sm flex items-center justify-center text-center bg-white rounded-md'>You don,t have any blogs</div>}
         </div>
       </div>
     </div>

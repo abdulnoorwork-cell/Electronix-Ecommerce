@@ -21,7 +21,7 @@ const SingleBlog = () => {
     }
     useEffect(() => {
         fetchBog();
-    }, [])
+    }, [blogId])
     return (
         <>
             <PageBanner text={`${blog[0]?.title}`} />

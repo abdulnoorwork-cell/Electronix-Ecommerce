@@ -103,31 +103,32 @@ const Dashboard = () => {
           <p>Latest Producsts</p>
         </div>
         <div className='relative max-w-4xl overflow-x-auto shadow rounded-lg scrollbar-hide bg-white'>
-          <div className='w-full text-sm text-gray-800'>
-            <div className='sm:grid md:grid-cols-[1fr_2fr_1fr_1fr_1fr] sm:grid-cols-[1fr_2fr_1fr_1fr] hidden gap-2 py-[14px] px-2 shadow text-xs uppercase font-semibold'>
-              <label>Product</label>
-              <label>Product Title</label>
-              <label className='mx-auto'>Category</label>
-              <label className='mx-auto max-md:hidden'>Date</label>
-              <label className='mx-auto'>Action</label>
-            </div>
-            <div>
-              {products?.slice(length - 3).reverse().map((product, index) => (
-                <div key={index} className='product_list border-b border-gray-300 p-2 text-[13px] grid md:grid-cols-[1fr_2fr_1fr_1fr_1fr] sm:grid-cols-[1fr_2fr_1fr_1fr] grid-cols-[1fr_3fr_2fr] gap-2 items-center'>
-                  <figure>
-                    <img className='main_img w-14 h-14' src={JSON.parse(product?.image)} alt="" />
-                  </figure>
-                  <p className='leading-[1.4em]' style={{ fontFamily: 'Outfit' }}>{product?.name}</p>
-                  <p className='category mx-auto text-center leading-[1.4em]' style={{ fontFamily: 'Outfit' }}>{product?.category}</p>
-                  <p className='mx-auto max-md:hidden text-center leading-[1.4em]' style={{ fontFamily: 'Outfit' }}>{new Date(product?.createdAt).toDateString()}</p>
-                  <figure className=' flex text-sm items-center gap-2 sm:mx-auto'>
-                    <img src={edit_icon} onClick={() => { navigate(`/admin/updateproduct/${product._id}`) }} alt="" className='md:h-[20px] md:w-[20px] h-5 W-5 hover:scale-110 transition-all cursor-pointer' />
-                    <img src={cross_icon} onClick={() => deleteProduct(product._id)} alt="" className='md:h-[20px] md:w-[20px] h-5 W-5 border border-red-400 rounded-full hover:scale-110 transition-all cursor-pointer' />
-                  </figure>
-                </div>
-              ))}
-            </div>
-          </div>
+          {products.length > 0 ?
+            <div className='w-full text-sm text-gray-800'>
+              <div className='sm:grid md:grid-cols-[1fr_2fr_1fr_1fr_1fr] sm:grid-cols-[1fr_2fr_1fr_1fr] hidden gap-2 py-[14px] px-2 shadow text-xs uppercase font-semibold'>
+                <label>Product</label>
+                <label>Product Title</label>
+                <label className='mx-auto'>Category</label>
+                <label className='mx-auto max-md:hidden'>Date</label>
+                <label className='mx-auto'>Action</label>
+              </div>
+              <div>
+                {products?.slice(length - 3).reverse().map((product, index) => (
+                  <div key={index} className='product_list border-b border-gray-300 p-2 text-[13px] grid md:grid-cols-[1fr_2fr_1fr_1fr_1fr] sm:grid-cols-[1fr_2fr_1fr_1fr] grid-cols-[1fr_3fr_2fr] gap-2 items-center'>
+                    <figure>
+                      <img className='main_img w-14 h-14' src={JSON.parse(product?.image)} alt="" />
+                    </figure>
+                    <p className='leading-[1.4em]' style={{ fontFamily: 'Outfit' }}>{product?.name}</p>
+                    <p className='category mx-auto text-center leading-[1.4em]' style={{ fontFamily: 'Outfit' }}>{product?.category}</p>
+                    <p className='mx-auto max-md:hidden text-center leading-[1.4em]' style={{ fontFamily: 'Outfit' }}>{new Date(product?.createdAt).toDateString()}</p>
+                    <figure className=' flex text-sm items-center gap-2 sm:mx-auto'>
+                      <img src={edit_icon} onClick={() => { navigate(`/admin/updateproduct/${product._id}`) }} alt="" className='md:h-[20px] md:w-[20px] h-5 W-5 hover:scale-110 transition-all cursor-pointer' />
+                      <img src={cross_icon} onClick={() => deleteProduct(product._id)} alt="" className='md:h-[20px] md:w-[20px] h-5 W-5 border border-red-400 rounded-full hover:scale-110 transition-all cursor-pointer' />
+                    </figure>
+                  </div>
+                ))}
+              </div>
+            </div> : <div className='font-medium min-h-[100px] text-sm flex items-center justify-center text-center bg-white rounded-md max-w-2xl'>You don,t have any products</div>}
         </div>
       </div>
       {/* blogs */}
@@ -136,31 +137,32 @@ const Dashboard = () => {
           <img src={dashboard_icon_4} alt="" />
           <p>Latest Blogs</p>
         </div>
-        <div className='relative w-full text-sm text-gray-800 overflow-x-auto shadow rounded-lg scrollbar-hide bg-white'>
-          <div className='w-full text-sm text-gray-500'>
-            <div className='blog_list_title text-xs uppercase p-3 border-b text-gray-800 font-semibold grid sm:grid-cols-[1fr_2fr_1fr_1fr] grid-cols-[1fr_2fr_1fr] gap-2'>
-              <label className=' l:px-6'>Blog</label>
-              <label className=''>Blog Title</label>
-              <label className=' max-sm:hidden'>Date</label>
-              <label className='mx-auto'>Action</label>
+        {blogs.length > 0 ?
+          <div className='relative w-full text-sm text-gray-800 overflow-x-auto shadow rounded-lg scrollbar-hide bg-white'>
+            <div className='w-full text-sm text-gray-500'>
+              <div className='blog_list_title text-xs uppercase p-3 border-b text-gray-800 font-semibold grid sm:grid-cols-[1fr_2fr_1fr_1fr] grid-cols-[1fr_2fr_1fr] gap-2'>
+                <label className=' l:px-6'>Blog</label>
+                <label className=''>Blog Title</label>
+                <label className=' max-sm:hidden'>Date</label>
+                <label className='mx-auto'>Action</label>
+              </div>
+              <div>
+                {blogs?.slice(length - 3).reverse().map((blog, index) => (
+                  <div key={index} className='blog_list border-b text-gray-800 border-gray-300 text-sm p-3 grid sm:grid-cols-[1fr_2fr_1fr_1fr] grid-cols-[1fr_2fr_1fr] gap-2 items-center'>
+                    <figure className=''>
+                      <img className='main_image h-8 w-14' src={blog.image} alt="" />
+                    </figure>
+                    <p className=' leading-[1.3em]' style={{ fontFamily: 'Outfit' }}>{blog.title}</p>
+                    <p className=' max-sm:hidden' style={{ fontFamily: 'Outfit' }}>{new Date(blog.createdAt).toDateString()}</p>
+                    <figure className=' flex text-sm items-center gap-2 mx-auto'>
+                      <img src={edit_icon} onClick={() => { navigate(`/admin/updateblog/${blog._id}`) }} alt="" className='md:h-[20px] md:w-[20px] h-5 W-5 hover:scale-110 transition-all cursor-pointer' />
+                      <img src={cross_icon} onClick={() => deleteBlog(blog._id)} alt="" className='md:h-[20px] md:w-[20px] h-5 W-5 border border-red-400 rounded-full hover:scale-110 transition-all cursor-pointer' />
+                    </figure>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div>
-              {blogs?.slice(length - 3).reverse().map((blog, index) => (
-                <div key={index} className='blog_list border-b text-gray-800 border-gray-300 text-sm p-3 grid sm:grid-cols-[1fr_2fr_1fr_1fr] grid-cols-[1fr_2fr_1fr] gap-2 items-center'>
-                  <figure className=''>
-                    <img className='main_image h-8 w-14' src={blog.image} alt="" />
-                  </figure>
-                  <p className=' leading-[1.3em]' style={{ fontFamily: 'Outfit' }}>{blog.title}</p>
-                  <p className=' max-sm:hidden' style={{ fontFamily: 'Outfit' }}>{new Date(blog.createdAt).toDateString()}</p>
-                  <figure className=' flex text-sm items-center gap-2 mx-auto'>
-                    <img src={edit_icon} onClick={() => { navigate(`/admin/updateblog/${blog._id}`) }} alt="" className='md:h-[20px] md:w-[20px] h-5 W-5 hover:scale-110 transition-all cursor-pointer' />
-                    <img src={cross_icon} onClick={() => deleteBlog(blog._id)} alt="" className='md:h-[20px] md:w-[20px] h-5 W-5 border border-red-400 rounded-full hover:scale-110 transition-all cursor-pointer' />
-                  </figure>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+          </div> : <div className='font-medium min-h-[100px] text-sm flex items-center justify-center text-center bg-white rounded-md max-w-2xl'>You don,t have any blogs</div>}
       </div>
       {/* Orders */}
       <div>
@@ -168,6 +170,7 @@ const Dashboard = () => {
           <img src={dashboard_icon_4} alt="" />
           <p>Latest Orders</p>
         </div>
+        {orders.length>0 ? 
         <div className='max-w-5xl overflow-auto'>
           {orders?.slice(length - 3).reverse().map((order, index) => (
             <div key={index} className="bg-white grid xl:grid-cols-[2fr_2fr_1fr_2fr_1fr] md:grid-cols-[2fr_2fr_1fr] sm:grid-cols-2 items-center gap-4 py-4 px-3 rounded-md border border-gray-300 text-gray-800">
@@ -200,7 +203,7 @@ const Dashboard = () => {
               </select>
             </div>
           ))}
-        </div>
+        </div> : <div className='font-medium min-h-[100px] text-sm flex items-center justify-center text-center bg-white rounded-md max-w-2xl'>You don,t have any orders</div>}
       </div>
     </div >
   )
